@@ -120,9 +120,6 @@ void Heap<T>::heapify_up(size_t index) {
 }
 template <typename T>
 void Heap<T>::heapify_down(size_t index) {
-
-
-  // heapify down
   while(has_child(index)) {
     if(right_child_index(index) != -1) {
       // compare the index value with both children
