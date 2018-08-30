@@ -4,7 +4,6 @@
 #include <cstdlib>
 using namespace std;
 
-// create node struct
 struct node{
   int data;
   struct node* prev;
@@ -45,7 +44,6 @@ void doublyLL::create(int val){
     head = temp;
   }
   else{
-    // if the head isn't null, transfer and adjust
     later = head;
     while(later->next != NULL){
       later = later->next;
@@ -57,9 +55,7 @@ void doublyLL::create(int val){
   struct node* list;
 
 }
-// print the list
 void doublyLL::printList(){
-  // if no list present
   if(head == NULL){
     return;
   }
@@ -69,7 +65,7 @@ void doublyLL::printList(){
     iterate = iterate->next;
   }
 }
-// count the elements
+
 int doublyLL::count(){
   if(head == NULL){
     return 0;
@@ -82,41 +78,32 @@ int doublyLL::count(){
   }
   return count;
 }
-// reverse the list
+
 void doublyLL::reverse(){
-  // create pointers
   struct node* traverse1 = head;
-  // set original values
   traverse1->next = NULL;
   struct node* traverse2 = traverse1->next;
   traverse1->prev = traverse2;
   while(traverse2 != NULL){
      traverse2->prev = traverse2->next;
      traverse2->next = traverse1;
-     // set equal
      traverse1 = traverse2;
      traverse2 = traverse2->prev;
   }
-  // set head
   head = traverse1;
 }
 
 void doublyLL::deleteElement(int val){
-  // temp nodes
   struct node* temp;
-  // use later
   struct node* temp2;
-  // if val is start of list
   if(head->data == val){
     temp = start;
     start = start->next;
-    // completely lose the previous
     start->prev = null;
-    // kill it
     free(temp);
     return;
   }
-  // check if in between
+
   temp2 = head;
   while(temp2->next->next != NULL){
     if(temp2->next->data == val){
@@ -136,12 +123,10 @@ void doublyLL::deleteElement(int val){
 }
 
 void doublyLL::insertAtBegin(int val){
-  // base case
   if(head == null){
     return;
   }
   struct node* temp = new(struct node);
-  // set the values
   temp->prev = NULL;
   temp->next = head;
   temp->data = value;
@@ -149,7 +134,6 @@ void doublyLL::insertAtBegin(int val){
   head = temp;
 }
 bool doublyLL::searchElement(int val){
-  // iterator
   struct node* iterate = head;
   if(head->data == val){
     return true;
@@ -167,14 +151,11 @@ bool doublyLL::searchElement(int val){
 }
 
 void doublyLL::insertAtMiddle(int val, int position){
-  // base case
   if(head == null){
     return;
   }
-  // create node structures
   struct node* temp = new (struct node);
   struct node* current = head;
-  // make a check for the elements (see if there are less elements than position)
   for(int i = 0; i < position-1; i++){
     current = current->next;
     // null check
